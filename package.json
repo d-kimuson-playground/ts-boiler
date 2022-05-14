@@ -6,12 +6,26 @@
   "scripts": {
     "build": "tsc -p .",
     "typecheck": "tsc -p . --noEmit",
+    "lint:eslint": "eslint . --ext ts --cache",
+    "lint:prettier": "yarn run:prettier --check",
+    "lint": "run-s 'lint:*'",
+    "fix:eslint": "yarn lint:eslint --fix",
+    "fix:prettier": "yarn run:prettier --write",
+    "fix": "run-s 'fix:*'",
+    "run:prettier": "prettier '**/*.{ts,js,json,md,yml,yaml}'",
     "prepare": "husky install"
   },
   "devDependencies": {
     "@tsconfig/strictest": "^1.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
     "commitizen": "^4.2.4",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
     "husky": "^8.0.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.6.2",
     "typescript": "^4.6.4"
   }
 }
