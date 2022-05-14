@@ -129,8 +129,14 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# === project original ===
+
+# cspell
+.cspellcache
+
 # Mac
 .DS_Store
 
 # personal
 .history
+.vscode
