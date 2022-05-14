@@ -63,11 +63,6 @@ module.exports = {
         ],
         pathGroups: [
           {
-            pattern: "@/**",
-            group: "internal",
-            position: "before",
-          },
-          {
             pattern: "~/**",
             group: "internal",
             position: "before",
