@@ -1,6 +1,6 @@
 {
   "version": "0.2",
   "language": "en",
-  "words": ["typecheck", "esbuild"],
+  "words": ["esbuild", "typecheck"],
   "ignorePaths": ["yarn.lock"]
 }
