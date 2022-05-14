@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "prepare": "husky install"
+  },
   "devDependencies": {
+    "commitizen": "^4.2.4",
+    "husky": "^8.0.1",
     "typescript": "^4.6.4"
   }
 }
