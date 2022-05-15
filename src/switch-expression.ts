@@ -1,54 +1,9 @@
-import type { IsNever, TypeEq } from "~/type/utils"
-
-type GuardFunction<Value, Guarded extends Value> =
-  | ((value: Value) => boolean)
-  | ((value: Value) => value is Guarded)
-type ResolveFunction<Value, Resolved> = ((value: Value) => Resolved) | Resolved
-
-type SwitchCaseObject<T, Result = never> = {
-  value: T
-  resolvedValue?: Result
-  case: <
-    Value extends T,
-    GuardF extends GuardFunction<T, Value>,
-    Ret,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Guarded = GuardF[] extends ((value: any) => value is infer I)[] ? I : never,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    CaseType = GuardF[] extends ((value: any) => value is Value)[]
-      ? "guard"
-      : boolean extends ( // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          GuardF extends (value: any) => value is Value ? true : false
-        )
-      ? "value"
-      : "validate",
-    NextValue = CaseType extends "validate"
-      ? T
-      : CaseType extends "value"
-      ? Exclude<T, Value>
-      : Exclude<T, Guarded>
-  >(
-    value: Value | GuardF,
-    resolve: ResolveFunction<
-      CaseType extends "validate"
-        ? T
-        : CaseType extends "value"
-        ? Value
-        : CaseType extends "guard"
-        ? Guarded
-        : never,
-      Ret
-    >
-  ) => SwitchCaseObject<
-    NextValue,
-    IsNever<Result> extends true ? Ret : Result | Ret
-  >
-  default: IsNever<T> extends true
-    ? () => Result
-    : <Default>(
-        resolve: ResolveFunction<T, Default>
-      ) => TypeEq<Default, unknown> extends true ? Result : Result | Default
-}
+import type {
+  SwitchCaseObject,
+  GuardFunction,
+  ResolveFunction,
+} from "./switch-expression.type"
+import type { IsNever } from "~/type/utils.type"
 
 const unresolvedSwitchCaseResult = {
   __type: "UnresolvedSwitchCaseResult",

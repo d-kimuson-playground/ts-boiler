@@ -75,4 +75,13 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ["**/*.type.ts", "**/*.type-test.ts"],
+      rules: {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/ban-types": "off",
+      },
+    },
+  ],
 }

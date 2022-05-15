@@ -1,6 +1,6 @@
 {
   "version": "0.2",
   "language": "en",
-  "words": ["deps", "esbuild", "typecheck"],
+  "words": ["deps", "esbuild", "Omittable", "typecheck", "Uncapitalize"],
   "ignorePaths": ["yarn.lock"]
 }
