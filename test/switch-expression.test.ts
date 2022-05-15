@@ -49,11 +49,14 @@ describe("switchExpression", () => {
             return "guardResult" as const
           }
         )
-        .case((value) => {
-          // not constrict
-          expectType<"validate" | "remain">(value)
-          return true
-        }, "ngResult" as const)
+        .case(
+          (_value) => true,
+          (value) => {
+            // not constrict
+            expectType<"validate" | "remain">(value)
+            return "ngResult" as const
+          }
+        )
         .default("defaultResult" as const)
 
       expectType<"valueResult" | "guardResult" | "ngResult" | "defaultResult">(
