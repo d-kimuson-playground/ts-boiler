@@ -5,6 +5,6 @@ module.exports = {
   ],
   "**/*.ts": [
     "eslint --cache --fix",
-    "yarn test --config './jest.config.lint-staged.js' --coverage --passWithNoTests --findRelatedTests",
+    "yarn test --config './jest.config.lint-staged.js' --coverage --findRelatedTests",
   ],
 }
