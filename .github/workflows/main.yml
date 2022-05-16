@@ -11,6 +11,8 @@ on:
 jobs:
   main:
     runs-on: ubuntu-20.04
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
@@ -73,17 +75,17 @@ jobs:
             echo "$file was changed"
           done
 
+      - name: update review status (approve or request-changes)
+        run: |
+          gh pr review ${{ github.event.number }} --request-changes
+
       - name: major coverage for changed files
         run: |
-          yarn test --coverage --coverageReporters=json-summary --passWithNoTests --collectCoverageFrom ${{ steps.changed-files.outputs.all_changed_files }}
-          node ./.github/bin/check_coverage.mjs
+          yarn test --config 'jest.config.ci.js' --coverage --coverageReporters=json-summary --passWithNoTests --collectCoverageFrom ${{ steps.changed-files.outputs.all_changed_files }}
 
       - name: update review status (approve or request-changes)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # gh pr review ${{ github.event.number }} --approve
-          gh pr review ${{ github.event.number }} --request-changes
+          gh pr review ${{ github.event.number }} --approve
 
   dependabot_auto_merge:
     runs-on: ubuntu-20.04
