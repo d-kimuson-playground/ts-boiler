@@ -75,7 +75,7 @@ jobs:
 
       - name: major coverage for changed files
         run: |
-          yarn test --coverage --coverageReporters=json-summary --collectCoverageFrom ${{ steps.changed-files.outputs.all_changed_files }}
+          yarn test --coverage --coverageReporters=json-summary --passWithNoTests --collectCoverageFrom ${{ steps.changed-files.outputs.all_changed_files }}
           node ./.github/bin/check_coverage.mjs
 
       - name: update review status (approve or request-changes)
