@@ -79,6 +79,8 @@ jobs:
           node ./.github/bin/check_coverage.mjs
 
       - name: update review status (approve or request-changes)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # gh pr review ${{ github.event.number }} --approve
           gh pr review ${{ github.event.number }} --request-changes
