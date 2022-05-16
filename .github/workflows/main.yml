@@ -4,7 +4,9 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   main:
@@ -12,10 +14,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -62,7 +60,7 @@ jobs:
           yarn test
 
   dependabot_auto_merge:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     if: ${{ github.actor == 'dependabot[bot]' }}
     needs: main
     permissions:
