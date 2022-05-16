@@ -75,7 +75,7 @@ jobs:
 
       - name: major coverage for changed files
         run: |
-          yarn test --config 'jest.config.ci.js' --coverage --coverageReporters=json-summary --passWithNoTests --collectCoverageFrom ${{ steps.changed-files.outputs.all_changed_files }}
+          yarn test --config 'jest.config.ci.js' --coverage --collectCoverageFrom ${{ steps.changed-files.outputs.all_changed_files }}
 
   dependabot_auto_merge:
     runs-on: ubuntu-20.04
