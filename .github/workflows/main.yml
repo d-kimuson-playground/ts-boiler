@@ -73,6 +73,16 @@ jobs:
             echo "$file was changed"
           done
 
+      - name: major coverage for changed files
+        run: |
+          yarn test --coverage --coverageReporters=json-summary --collectCoverageFrom ${{ steps.changed-files.outputs.all_changed_files }}
+          node ./.github/bin/check_coverage.mjs
+
+      - name: update review status (approve or request-changes)
+        run: |
+          # gh pr review ${{ github.event.number }} --approve
+          gh pr review ${{ github.event.number }} --request-changes
+
   dependabot_auto_merge:
     runs-on: ubuntu-20.04
     if: ${{ github.actor == 'dependabot[bot]' }}
