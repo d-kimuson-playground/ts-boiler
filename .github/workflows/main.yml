@@ -69,7 +69,7 @@ jobs:
         with:
           sha: ${{ github.sha }}
           files: |
-            *.ts
+            **/*.ts
           separator: "|"
 
       - name: major coverage for changed files
