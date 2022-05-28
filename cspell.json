@@ -1,6 +1,18 @@
 {
   "version": "0.2",
   "language": "en",
-  "words": ["deps", "esbuild", "Omittable", "typecheck", "Uncapitalize"],
+  "words": [
+    "deps",
+    "esbuild",
+    "Omittable",
+    "typecheck",
+    "Uncapitalize",
+    "esbenp",
+    "cschleiden",
+    "dbaeumer",
+    "prettierrc",
+    "autofix",
+    "eslintcache"
+  ],
   "ignorePaths": ["yarn.lock"]
 }

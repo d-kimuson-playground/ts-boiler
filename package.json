@@ -20,6 +20,11 @@
     "prepare:git": "git config --local --add merge.ff false && git config --local --add pull.ff only",
     "prepare": "run-p 'prepare:*'"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
     "@tsconfig/strictest": "^1.0.1",
     "@types/jest": "^27.5.1",
