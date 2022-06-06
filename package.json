@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@tsconfig/strictest": "^1.0.1",
-    "@types/jest": "^28.1.0",
+    "@types/jest": "^28.1.1",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.1",
     "commitizen": "^4.2.4",
