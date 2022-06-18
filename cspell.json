@@ -12,7 +12,10 @@
     "dbaeumer",
     "prettierrc",
     "autofix",
-    "eslintcache"
+    "eslintcache",
+    "hoge",
+    "huga",
+    "makura"
   ],
   "ignorePaths": ["yarn.lock"]
 }
