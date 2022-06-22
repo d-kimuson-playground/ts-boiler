@@ -14,7 +14,7 @@
     "fix:prettier": "yarn run:prettier --write",
     "fix": "run-s 'fix:*'",
     "run:prettier": "prettier '**/*.{ts,js,json,md,yml,yaml}'",
-    "lint-staged": "lint-staged --allow-empty -r",
+    "lint-staged": "lint-staged --allow-empty -r --verbose",
     "test": "jest",
     "prepare:husky": "husky install",
     "prepare:git": "git config --local --add merge.ff false && git config --local --add pull.ff only",

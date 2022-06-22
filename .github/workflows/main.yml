@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -51,6 +51,10 @@ jobs:
           yarn install --frozen-lockfile
         shell: bash
 
+      - name: typecheck
+        run: |
+          yarn typecheck
+
       - name: lint
         run: |
           yarn lint
@@ -58,6 +62,19 @@ jobs:
       - name: test
         run: |
           yarn test
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v20
+        with:
+          sha: ${{ github.sha }}
+          files: |
+            **/*.ts
+          separator: "|"
+
+      - name: major coverage for changed files
+        run: |
+          yarn test --config 'jest.config.ci.js' --coverage --collectCoverageFrom "${{ (steps.changed-files.outputs.all_changed_files != '' && steps.changed-files.outputs.all_changed_files) || '(?!)' }}"
 
   dependabot_auto_merge:
     runs-on: ubuntu-20.04
