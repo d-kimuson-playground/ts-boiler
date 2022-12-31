@@ -8,15 +8,16 @@
     "typecheck": "tsc -p . --noEmit",
     "lint:eslint": "eslint . --ext ts --cache",
     "lint:prettier": "yarn run:prettier --check",
-    "lint:cspell": "cspell lint './**/*.{ts,js,json,md,yml,yaml}' --gitignore --cache",
+    "lint:cspell": "cspell lint './**/*.{tsx,ts,mts,mcs,mjs,cjs,js,json,md,yml,yaml}' --gitignore --cache",
     "lint": "run-s 'lint:*'",
     "fix:eslint": "yarn lint:eslint --fix",
     "fix:prettier": "yarn run:prettier --write",
     "fix": "run-s 'fix:*'",
-    "run:prettier": "prettier '**/*.{ts,js,json,md,yml,yaml}'",
+    "run:prettier": "prettier '**/*.{tsx,ts,mts,mcs,mjs,cjs,js,json,md,yml,yaml}'",
     "lint-staged": "lint-staged --allow-empty -r",
     "test": "jest",
-    "prepare": "husky install"
+    "setup:husky": "husky install",
+    "setup": "run-s 'setup:*'"
   },
   "devDependencies": {
     "@tsconfig/strictest": "^1.0.1",

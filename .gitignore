@@ -139,7 +139,6 @@ dist
 
 # personal
 .history
-.vscode
 # yarn v3
 .yarn/cache
 .yarn/unplugged
