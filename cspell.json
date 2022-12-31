@@ -9,7 +9,16 @@
     "Uncapitalize",
     "autofix",
     "esbenp",
-    "nocheck"
+    "nocheck",
+    "esbenp",
+    "cschleiden",
+    "dbaeumer",
+    "prettierrc",
+    "autofix",
+    "eslintcache",
+    "hoge",
+    "huga",
+    "makura"
   ],
   "ignorePaths": ["yarn.lock"]
 }

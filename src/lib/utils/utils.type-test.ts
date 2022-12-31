@@ -8,6 +8,7 @@ import type {
   TupleN,
   UnionToIntersection,
   UnionToTuple,
+  Range,
 } from "~/lib/utils/utils.type"
 
 describe("array-at-least-n", () => {
@@ -173,4 +174,9 @@ describe("union-to-tuple", () => {
     | "48"
     | "49"
   >
+})
+
+describe("range", () => {
+  type It1 = Assert<"0からN", TypeEq<Range<0, 3>, [0, 1, 2]>>
+  type It2 = Assert<"NからM", TypeEq<Range<3, 5>, [3, 4]>>
 })

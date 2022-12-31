@@ -1,5 +1,18 @@
 {
   "editor.tabSize": 2,
+  "files.watcherExclude": {
+    // default
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/.hg/store/**": true,
+    // customized
+    ".cspellcache": true,
+    "**/dist": true,
+    "**/.eslintcache": true,
+    "**/server/.coverage": true,
+    "**/server/coverage": true
+  },
   // typescript
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.preferences.importModuleSpecifier": "non-relative",

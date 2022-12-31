@@ -70,8 +70,42 @@ type SnakeToPascal<Str extends string> = Str extends `${infer H}_${infer T}`
 
 export type SnakeToCamel<Str extends string> = Uncapitalize<SnakeToPascal<Str>>
 
-export type Expand<T> = T extends object
-  ? T extends infer O
-    ? { [K in keyof O]: O[K] }
+export type ExcludeMethod<T> = {
+  [K in keyof T as T[K] extends Function ? never : K]: T[K]
+}
+
+export type Simplify<T> = T extends object
+  ? T extends Function
+    ? T
+    : T extends infer O
+    ? { [K in keyof O]: Simplify<O[K]> }
     : never
   : T
+
+export type GetReadonlyKeys<T> = {
+  [K in keyof Required<T>]: TypeEq<
+    Pick<T, K>,
+    Readonly<Pick<T, K>>
+  > extends true
+    ? K
+    : never
+}[keyof T]
+
+export type Range0ToN<
+  N extends number,
+  Result extends number[] = [],
+  CountIndexArray extends number[] = [],
+  Index = CountIndexArray["length"]
+> = Index extends N
+  ? Result
+  : Range0ToN<
+      N,
+      [...Result, Index extends number ? Index : never],
+      [...CountIndexArray, never]
+    >
+
+export type Range<From extends number, To extends number> = Range0ToN<
+  To,
+  [],
+  Range0ToN<From>
+>

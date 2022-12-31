@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   main:
@@ -12,10 +14,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -53,6 +51,10 @@ jobs:
           yarn install --frozen-lockfile
         shell: bash
 
+      - name: typecheck
+        run: |
+          yarn typecheck
+
       - name: lint
         run: |
           yarn lint
@@ -61,8 +63,21 @@ jobs:
         run: |
           yarn test
 
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v20
+        with:
+          sha: ${{ github.sha }}
+          files: |
+            **/*.ts
+          separator: "|"
+
+      - name: major coverage for changed files
+        run: |
+          yarn test --config 'jest.config.ci.js' --coverage --collectCoverageFrom "${{ (steps.changed-files.outputs.all_changed_files != '' && steps.changed-files.outputs.all_changed_files) || '(?!)' }}"
+
   dependabot_auto_merge:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     if: ${{ github.actor == 'dependabot[bot]' }}
     needs: main
     permissions:

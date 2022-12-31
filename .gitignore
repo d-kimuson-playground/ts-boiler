@@ -137,10 +137,11 @@ dist
 # Mac
 .DS_Store
 
-# personal
-.history
 # yarn v3
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
 .yarn/install-state.gz
+
+# personal
+.history
