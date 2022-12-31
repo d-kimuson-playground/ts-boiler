@@ -25,7 +25,11 @@ exec(
         readFileSync(resolve(".", "cspell.json"), { encoding: "utf8" })
       )
       /** @type {string[]} */
-      const updatedWords = [...new Set([].concat(jsonData.words).concat(words))]
+      const initWords = []
+      /** @type {string[]} */
+      const updatedWords = [
+        ...new Set(initWords.concat(jsonData.words ?? []).concat(words)),
+      ]
 
       writeFileSync(
         resolve(".", "cspell.json"),

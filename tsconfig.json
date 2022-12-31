@@ -1,14 +1,9 @@
 {
-  "extends": "@tsconfig/strictest",
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "baseUrl": "./",
-    "paths": {
-      "~/*": ["src/*"]
-    },
-    "moduleResolution": "node",
-    "outDir": "dist"
-  },
-  "include": ["src"]
+  // files は必ず空にする
+  "files": [],
+  "references": [
+    // ここに tsserver から参照してほしい設定ファイルのパスを書いていく
+    { "path": "./tsconfig.src.json" },
+    { "path": "./tsconfig.test.json" }
+  ]
 }

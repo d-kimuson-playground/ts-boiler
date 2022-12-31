@@ -1,5 +1,5 @@
 import { expectType } from "tsd"
-import { switchExpression } from "~/switch-expression"
+import { switchExpression } from "~/lib/utils/switch-expression"
 
 describe("switchExpression", () => {
   describe("Declaration type is appropriate", () => {

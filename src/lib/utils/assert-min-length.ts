@@ -1,4 +1,4 @@
-import type { ArrayAtLeastN } from "~/type/utils.type"
+import type { ArrayAtLeastN } from "~/lib/utils/utils.type"
 
 export const assertMinLength = <T, L extends number>(
   arr: T[],
@@ -8,5 +8,5 @@ export const assertMinLength = <T, L extends number>(
     throw new TypeError(
       `Type assertion failed. arr.length should be gt ${length}, but get ${arr.length}`
     )
-  return arr as ArrayAtLeastN<T, L>
+  return arr as unknown as ArrayAtLeastN<T, L>
 }

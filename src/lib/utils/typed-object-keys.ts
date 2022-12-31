@@ -1,4 +1,4 @@
-import type { IsNever } from "~/type/utils.type"
+import type { IsNever } from "~/lib/utils/utils.type"
 
 type IsStrUnion<T, Tmp = T extends string ? true : false> = boolean extends Tmp
   ? true

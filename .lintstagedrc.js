@@ -3,5 +3,5 @@ module.exports = {
     "prettier --write",
     "cspell lint --gitignore --cache",
   ],
-  "**/*.ts": ["eslint --cache --fix"],
+  "**/*.{tsx,ts,mts,mcs}": ["eslint --cache --fix"],
 }

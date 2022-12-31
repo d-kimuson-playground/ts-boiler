@@ -3,7 +3,7 @@ import type {
   GuardFunction,
   ResolveFunction,
 } from "./switch-expression.type"
-import type { IsNever } from "~/type/utils.type"
+import type { IsNever } from "~/lib/utils/utils.type"
 
 const unresolvedSwitchCaseResult = {
   __type: "UnresolvedSwitchCaseResult",

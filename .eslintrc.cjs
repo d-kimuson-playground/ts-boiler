@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: "./**/tsconfig.json",
+    project: "./**/(tsconfig.src|tsconfig.test).json",
     sourceType: "module",
   },
   extends: [
@@ -96,6 +96,7 @@ module.exports = {
       rules: {
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/no-unused-vars": "off",
       },
     },
   ],

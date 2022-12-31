@@ -1,5 +1,8 @@
 import { expectType } from "tsd"
-import { typedObjectKeys, typedObjectKeysStrict } from "~/typed-object-keys"
+import {
+  typedObjectKeys,
+  typedObjectKeysStrict,
+} from "~/lib/utils/typed-object-keys"
 
 describe("typedObjectKeys", () => {
   describe("string", () => {

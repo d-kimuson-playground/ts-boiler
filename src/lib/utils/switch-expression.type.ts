@@ -1,4 +1,4 @@
-import type { IsNever, TypeEq } from "~/type/utils.type"
+import type { IsNever, TypeEq } from "~/lib/utils/utils.type"
 
 export type GuardFunction<Value, Guarded extends Value> =
   | ((value: Value) => boolean)

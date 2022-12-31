@@ -1,5 +1,5 @@
 import { expectType } from "tsd"
-import { assertMinLength } from "~/assert-min-length"
+import { assertMinLength } from "~/lib/utils/assert-min-length"
 
 describe("assertMinLength", () => {
   it("valid length", () => {
